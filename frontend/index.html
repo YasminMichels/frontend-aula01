@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css.css" />
+    <title>Chat</title>
+  </head>
+  <body>
+    <div class="chat">
+      <div class="header">
+        <h2>Atendimento ao Cliente</h2>
+      </div>
+      <div class="msg" id="message-container">
+        <div class="dialog atendente">
+          <div class="msg-atend">Abuble</div>
+        </div>
+        <div class="dialog cliente">
+          <div class="msg-cliente">Abublebuble</div>
+        </div>
+        <div class="dialog atendente">
+          <div class="msg-atend">Abuble buble ble</div>
+        </div>
+      </div>
+      <div class="chat-input">
+        <input
+          type="text"
+          id="message-input"
+          placeholder="Digite sua mensagem..."
+        />
+        <button class="button-msg" onclick="enviaMsg()">Enviar</button>
+      </div>
+    </div>
+    <script>
+      function enviaMsg() {
+        var msgDigitadaUser = document.getElementById("message-input").value;
+        var msgCampo = document.getElementById("message-container");
+        var msgNovaCliente = document.createElement("div");
+        var msgNovaAtendente = document.createElement("div");
+
+        msgNovaCliente.className = "dialog cliente";
+
+        msgNovaCliente.innerHTML =
+          '<div class="msg-cliente">' + msgDigitadaUser + "</div>";
+
+        msgCampo.appendChild(msgNovaCliente);
+
+        msgNovaAtendente.className = "dialog atendente";
+
+        msgNovaAtendente.innerHTML =
+          '<div class="msg-atend"><img src="hahaha.jpg" style="width: 200px; height: 150px;"></div>';
+
+        msgCampo.appendChild(msgNovaAtendente);
+
+        document.getElementById("message-input").value = "";
+      }
+
+      const msgUser = document.getElementById("message-input");
+      msgUser.addEventListener("keypress", function (event) {
+        if (event.keyCode === 13) {
+          enviaMsg();
+        }
+      });
+    </script>
+  </body>
+</html>
